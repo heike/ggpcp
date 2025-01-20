@@ -84,13 +84,24 @@ separation allows for a cleaner user interface: parameters affecting the data
 preparation process can be moved to the relevant (set of) function(s) only, thereby
 reducing the  number of arguments without any loss of functionality.</p>
 <p><code>method</code> is a character string that denotes how to scale the variables
-in the parallel coordinate plot. Options are named in the same way as the options in <code><a href="https://ggobi.github.io/ggally/reference/ggparcoord.html" class="external-link">GGally::ggparcoord()</a></code>:</p><ul><li><p><code>raw</code>: raw data used, no scaling will be done.</p></li>
-<li><p><code>std</code>: univariately, subtract mean and divide by standard deviation. To get values into a unit interval we use a linear transformation of f(y) = y/4+0.5.</p></li>
-<li><p><code>robust</code>: univariately, subtract median and divide by median absolute deviation. To get values into an expected interval of unit interval we use a linear transformation of f(y) = y/4+0.5.</p></li>
-<li><p><code>uniminmax</code>: univariately, scale so the minimum of the variable is zero, and the maximum is one.</p></li>
-<li><p><code>globalminmax</code>: global scaling; the global maximum is mapped to 1,
-global minimum across the variables is mapped to 0.</p></li>
-</ul></div>
+in the parallel coordinate plot. Options are named in the same way as the options in <code><a href="https://ggobi.github.io/ggally/reference/ggparcoord.html" class="external-link">GGally::ggparcoord()</a></code>:</p><dl><dt><code>raw</code></dt>
+<dd><p>raw data used, no scaling is done.</p></dd>
+
+<dt><code>std</code></dt>
+<dd><p>univariately, subtract mean and divide by standard deviation. To get values into a unit interval we use a linear transformation of f(y) = y/4+0.5.</p></dd>
+
+<dt><code>robust</code></dt>
+<dd><p>univariately, subtract median and divide by median absolute deviation. To get values into an expected interval of unit interval we use a linear transformation of f(y) = y/4+0.5.</p></dd>
+
+<dt><code>uniminmax</code></dt>
+<dd><p>univariately, scale so the minimum of the variable is zero, and the maximum is one.</p></dd>
+
+<dt><code>globalminmax</code></dt>
+<dd><p>global scaling; the global maximum is mapped to 1,
+global minimum across the variables is mapped to 0.</p></dd>
+
+
+</dl></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="pcp_select.html">pcp_select()</a></code>, <code><a href="pcp_arrange.html">pcp_arrange()</a></code></p></div>
