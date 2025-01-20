@@ -37,6 +37,6 @@ Suggests:
     purrr,
     testthat,
     GGally
-URL: https://github.com/heike/ggpcp
+URL: https://github.com/heike/ggpcp, https://heike.github.io/ggpcp/
 BugReports: https://github.com/heike/ggpcp/issues
 Roxygen: list(markdown = TRUE)

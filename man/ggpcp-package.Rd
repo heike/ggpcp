@@ -12,6 +12,7 @@ Modern Parallel Coordinate Plots have been introduced in the 1980s as a way to v
 Useful links:
 \itemize{
   \item \url{https://github.com/heike/ggpcp}
+  \item \url{https://heike.github.io/ggpcp/}
   \item Report bugs at \url{https://github.com/heike/ggpcp/issues}
 }
 
