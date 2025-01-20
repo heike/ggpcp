@@ -1,4 +1,5 @@
 url: https://heike.github.io/ggpcp/
 template:
   bootstrap: 5
-
+  bslib:
+    danger: "#A6081A"

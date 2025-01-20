@@ -87,7 +87,15 @@ aes_pcp()
 
 The geom `geom_pcp` draws line segments to connect positions of the same observational unit across axes:
 
-```{r}
+```{r flea}
+#| fig-alt: >
+#|    Parallel coordinate plot of the flea data. All physical measurements of the
+#|    fleas are included in the plot with the species classification as first and 
+#|    last variable. Line segments are colored by species. 
+#|    Aside from the general spaghetti mix of lines that comes with
+#|    parallel coordinate plots, there are some clusters apparent. The variables 
+#|    tar1 and all of the aede variables separate between at least two out of the
+#|    three species.
 flea %>%
   pcp_select(species, 2:7, species) %>%
   pcp_scale(method="uniminmax") %>%
@@ -110,7 +118,11 @@ Note that the variable `species` shows up twice in the plot - once as the rightm
 - `geom_pcp_boxes` draws rectangles framing each level of a categorical variable. The parameter `boxwidth` specifies the width of these rectangles (1 is the width between successive variables). `boxwidth` is set to 0.2 by default. 
 - `geom_pcp_labels` places a label center on each rectangle of a categorical variable. XXX The familiar parameters `nudge_x` and `nudge_y` work as usual to move labels. XXX HH: need to check that that's true
 
-```{r}
+```{r flea-labelled}
+#| fig-alt: >
+#|    Parallel coordinate plot of the flea data. The previous iteration of the plot
+#|    is extended by a layer showing labels of the levels of the categorical 
+#|    variable species.
 flea %>%
   pcp_select(1:7) %>%
   pcp_scale(method="uniminmax") %>%
@@ -129,7 +141,14 @@ flea %>%
 
 For categorical variables `ggpcp` presents a result similar to parsets by Kosara et al (2013).
 
-```{r, message = FALSE}
+```{r titanic, message = FALSE}
+#| fig-alt: >
+#|    Parallel coordinate plot of titanic data. The four categorical variables Class,
+#|    Sex, Age, and Survived, are plotted along the x axis. The observations within
+#|    each of the levels are plotted in lines stacked on top of one another. This
+#|    creates the impression that the line segments form a single band between
+#|    neighboring variables, making the parallel coordinate plot look like an example
+#|    of a parset plot.
 titanic <- as.data.frame(Titanic)
 titanic <- titanic %>%
   purrr::map(.f = function(x) rep(x, titanic$Freq)) %>%
@@ -152,7 +171,10 @@ titanic %>%
 
 Switching the ordering method in `pcp_arrange` to `from-both` allows us to focus on the two-dimensional relationships between variables on adjacent axes:
 
-```{r}
+```{r titanic-marginal}
+#| fig-alt: >
+#|    Parallel coordinate plot of titanic data. Variation of the previous plot with
+#|    a change on how ties between neighboring variables are resolved. 
 titanic %>% 
   pcp_select(1:4) %>%
   pcp_scale() %>%
@@ -173,7 +195,11 @@ Note that now the observations within each variable level are resorted before li
 
 while the `mtcars` data is quite old, it serves a good purpose here. All of the variables are coded as numeric variables, even when they should, in fact, be factor variables. In a standard parallel coordinate plot we get the usual uninformative fishnet between categorical variables such as `vs`, `am`, and `gear`, also visible for variable `cyl`:
 
-```{r}
+```{r mtcars-default}
+#| fig-alt: >
+#|    Parallel coordinate plot of the mtcars data. All variables of the dataset 
+#|    are included as numeric variables. Line segments are colored by the values 
+#|    in mpg.
 mtcars %>%
   pcp_select(1:ncol(mtcars)) %>%
   pcp_scale() %>%
@@ -184,7 +210,17 @@ mtcars %>%
 
 Once the variables are coded properly as factor variables, we get a much more informative view with a generalized parallel coordinate plot: Additionally, we draw separate facets for cars with higher and lower mileage (above 20 mpg versus below 20 mpg).
 
-```{r}
+```{r mtcars-nicer}
+#| fig-alt: >
+#|    Parallel coordinate plot of the mtcars data. In a variation to the previous
+#|    plot, two facets of the plot are drawn: On top, cars with at most 20 miles 
+#|    per gallon are included, the bottom plot shows cars that achieve more than 
+#|    20 miles per 1 gallon of gas. The variables cyl, vs, am, gear, and curb are
+#|    included as factor variables. Additionally, a variable called liter/100km 
+#|    is introduced as the European measure for efficiency. The variable disp is
+#|    included into the plot with its values multiplied by -1. This flips the order 
+#|    on that axis. Low efficiency cars have generally high number of values on 
+#|    cyl, disp, horsepower, and weight, and low values on drat (Rear axle ratio).
 mtcars %>%
   mutate(cyl = factor(cyl),
          vs = factor(vs),
@@ -224,7 +260,17 @@ The `nasa` data, made available as part of the `ggpcp` package provides and exte
 We grouped locations using all January and July measurements of all climate variables using a hierarchical clustering based on Ward's distance.
 The resulting clusters can then be summarized visually. What we see is that the clusters have a very distinct geographic pattern (tile plot).
 
-```{r echo=FALSE}
+```{r tile, echo=FALSE}
+#| fig-alt: >
+#|   Tile plot of dimension 24 x 24 covering the geographic area of Central America.
+#|   Tiles are filled by their cluster id. Even though clustering did not include
+#|   any spatial information, a strong geographic pattern reveals itself.
+#|   Tiles corresponding to sea levels belong to cluster 1, cluster 2 is 
+#|   predominantly made up of tiles along coastal areas and the Amazon river 
+#|   basin, clusters 3, 4 and 6 are high-evelation areas in the Andes and the 
+#|   Rockies Mountains. Cluster 5 are low(ish)-elevation areas off the coast in 
+#|   North and South America, and Cluster 7 is a collection of tiles that are 
+#|   'in-between' lower and higher elevation areas.
 wide <- nasa %>% select(id, month, year, starts_with("cloud"), ozone, pressure, surftemp, elevation) %>%
   gather(key = variable, value = value, -id, -month, -year) %>%
   filter(month %in% c("Jan","Jul")) %>%
@@ -281,7 +327,13 @@ wide %>% separate(id, into=c("y", "x"), remove = FALSE) %>%
 
 A regular parallel coordinate plot allows us to visualize a part of the dendrogram corresponding to the hierarchical clustering.
 
-```{r}
+```{r nasa-skeleton}
+#| fig-alt: >
+#|   Parallel Coordinate plot of result variables from hierarchical clustering
+#|   into 2 to 10 clusters. The cluster variables are included as numerical variables
+#|   resulting in a plot with a lot of overplotting. The overall impression is that
+#|   of a skeleton: the individual line segments show the relationship between
+#|   clusters but not their sizes.
 wide %>%
   pcp_select(86:94) %>%
   pcp_scale() %>%
@@ -292,7 +344,13 @@ wide %>%
 ```
 
 Using the generalized parallel coordinate plots we can visualize the clustering process in plots similar to what Schonlau (2002, 2004) coined the clustergram:
-```{r}
+```{r nasa-clustering}
+#| fig-alt: >
+#|   Parallel Coordinate plot of the same variables as before, but now the result
+#|   variables are included as factor variables and colored by the cluster results 
+#|   of ten clusters. Individual line segments are stacked on top of each other,
+#|   creating the impression of a single band, with a width proportional to the
+#|   number of observations included.  
 wide <- wide %>%
   mutate(
     cl2 = factor(cl2),

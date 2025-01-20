@@ -130,7 +130,7 @@ flea %>%
     geom_pcp(aes(colour = species))
 ```
 
-![](man/figures/unnamed-chunk-5-1.png)<!-- -->
+<img src="man/figures/flea-1.png" alt="Parallel coordinate plot of the flea data. All physical measurements of the fleas are included in the plot with the species classification as first and  last variable. Line segments are colored by species.  Aside from the general spaghetti mix of lines that comes with parallel coordinate plots, there are some clusters apparent. The variables  tar1 and all of the aede variables separate between at least two out of the three species."  />
 
 Note that the variable `species` shows up twice in the plot - once as
 the rightmost variables, once as the leftmost one. `species` is a
@@ -170,7 +170,7 @@ flea %>%
     geom_pcp_labels() 
 ```
 
-![](man/figures/unnamed-chunk-6-1.png)<!-- -->
+<img src="man/figures/flea-labelled-1.png" alt="Parallel coordinate plot of the flea data. The previous iteration of the plot is extended by a layer showing labels of the levels of the categorical  variable species."  />
 
 ## Examples
 
@@ -199,7 +199,7 @@ titanic %>%
     scale_x_discrete(expand = expansion(add=0.2))
 ```
 
-![](man/figures/unnamed-chunk-7-1.png)<!-- -->
+<img src="man/figures/titanic-1.png" alt="Parallel coordinate plot of titanic data. The four categorical variables Class, Sex, Age, and Survived, are plotted along the x axis. The observations within each of the levels are plotted in lines stacked on top of one another. This creates the impression that the line segments form a single band between neighboring variables, making the parallel coordinate plot look like an example of a parset plot."  />
 
 Switching the ordering method in `pcp_arrange` to `from-both` allows us
 to focus on the two-dimensional relationships between variables on
@@ -222,7 +222,7 @@ titanic %>%
     ## Scale for x is already present.
     ## Adding another scale for x, which will replace the existing scale.
 
-![](man/figures/unnamed-chunk-8-1.png)<!-- -->
+<img src="man/figures/titanic-marginal-1.png" alt="Parallel coordinate plot of titanic data. Variation of the previous plot with a change on how ties between neighboring variables are resolved. "  />
 
 Note that now the observations within each variable level are resorted
 before line segments are connected to adjacent axes. This allows us to
@@ -247,7 +247,7 @@ mtcars %>%
     geom_pcp(aes(colour = as.numeric(mpg)))
 ```
 
-![](man/figures/unnamed-chunk-9-1.png)<!-- -->
+<img src="man/figures/mtcars-default-1.png" alt="Parallel coordinate plot of the mtcars data. All variables of the dataset  are included as numeric variables. Line segments are colored by the values  in mpg."  />
 
 Once the variables are coded properly as factor variables, we get a much
 more informative view with a generalized parallel coordinate plot:
@@ -276,7 +276,7 @@ mtcars %>%
   facet_grid(mpg>20~., labeller = "label_both")
 ```
 
-![](man/figures/unnamed-chunk-10-1.png)<!-- -->
+<img src="man/figures/mtcars-nicer-1.png" alt="Parallel coordinate plot of the mtcars data. In a variation to the previous plot, two facets of the plot are drawn: On top, cars with at most 20 miles  per gallon are included, the bottom plot shows cars that achieve more than  20 miles per 1 gallon of gas. The variables cyl, vs, am, gear, and curb are included as factor variables. Additionally, a variable called liter/100km  is introduced as the European measure for efficiency. The variable disp is included into the plot with its values multiplied by -1. This flips the order  on that axis. Low efficiency cars have generally high number of values on  cyl, disp, horsepower, and weight, and low values on drat (Rear axle ratio)."  />
 
 What becomes obvious in this plot, is that fuel consumption of each car
 measured in miles per gallons (mpg), encoded as the first variable in
@@ -325,7 +325,7 @@ wide %>% separate(id, into=c("y", "x"), remove = FALSE) %>%
   coord_equal()
 ```
 
-![](man/figures/unnamed-chunk-13-1.png)<!-- -->
+![](man/figures/unnamed-chunk-6-1.png)<!-- -->
 
 <!-- From the parallel coordinate plot we see that cloud coverage in low, medium and high altitude distinguishes quite succinctly between some of the clusters. (Relative) temperatures in January (1) and July (7) are very indicative to separate between clusters on the Southern and Northern hemisphere.  -->
 
@@ -356,7 +356,7 @@ wide %>%
   xlab("Number of clusters")
 ```
 
-![](man/figures/unnamed-chunk-14-1.png)<!-- -->
+<img src="man/figures/nasa-skeleton-1.png" alt="Parallel Coordinate plot of result variables from hierarchical clustering into 2 to 10 clusters. The cluster variables are included as numerical variables resulting in a plot with a lot of overplotting. The overall impression is that of a skeleton: the individual line segments show the relationship between clusters but not their sizes."  />
 
 Using the generalized parallel coordinate plots we can visualize the
 clustering process in plots similar to what Schonlau (2002, 2004) coined
@@ -388,7 +388,7 @@ wide %>%
   guides(colour=guide_legend(override.aes = list(alpha=1)), reverse = TRUE)
 ```
 
-![](man/figures/unnamed-chunk-15-1.png)<!-- -->
+<img src="man/figures/nasa-clustering-1.png" alt="Parallel Coordinate plot of the same variables as before, but now the result variables are included as factor variables and colored by the cluster results  of ten clusters. Individual line segments are stacked on top of each other, creating the impression of a single band, with a width proportional to the number of observations included.  "  />
 
 Along the x-axis the number of clusters are plotted with one pcp axis
 each, from two clusters (left) to 10 clusters (right most pcp axis).
