@@ -1,0 +1,12 @@
+bibentry(
+  bibtype  = "Article",
+  title    = "Penguins Go Parallel - A Grammar of Graphics Framework for Generalized Parallel Coordinate Plots",
+  author   = "Susan VanderPlas and Yawei Ge and Antony Unwin and Heike Hofmann",
+  journal  = "Journal of Computational and Graphical Statistics",
+  year     = "2023",
+  volume   = "32",
+  number   = "4",
+  pages    = "1572--1587",
+  doi      = "10.1080/10618600.2023.2195462"
+)
+
