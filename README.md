@@ -3,8 +3,7 @@
 Status](http://www.r-pkg.org/badges/version/ggpcp)](https://cran.r-project.org/package=ggpcp)
 [![CRAN RStudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/ggpcp)](http://www.r-pkg.org/pkg/ggpcp)  
-[![R build
-status](https://github.com/heike/ggpcp/workflows/R-CMD-check/badge.svg)](https://github.com/heike/ggpcp/actions)
+[![R-CMD-check](https://github.com/heike/ggpcp/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/heike/ggpcp/actions/workflows/R-CMD-check.yaml)
 
 # ggpcp
 
