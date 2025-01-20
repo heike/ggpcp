@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Heike Hofmann \email{hofmann@iastate.edu} (\href{https://orcid.org/0000-0001-6216-5183}{ORCID})
+\strong{Maintainer}: Heike Hofmann \email{hhofmann4@unl.edu} (\href{https://orcid.org/0000-0001-6216-5183}{ORCID})
 
 Authors:
 \itemize{
