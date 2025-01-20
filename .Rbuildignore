@@ -4,3 +4,11 @@
 ^docs$
 ^pkgdown$
 ^\.github$
+
+CRAN-SUBMISSION
+LICENSE.md
+README.Rmd
+cran-comments.md
+
+data-raw
+stuff

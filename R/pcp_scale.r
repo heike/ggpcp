@@ -28,12 +28,12 @@
 #'
 #' `method` is a character string that denotes how to scale the variables
 #' in the parallel coordinate plot. Options are named in the same way as the options in [GGally::ggparcoord()]:
-#' \itemize{
-#'   \item{`raw`}{: raw data used, no scaling will be done.}
-#'   \item{`std`}{: univariately, subtract mean and divide by standard deviation. To get values into a unit interval we use a linear transformation of f(y) = y/4+0.5. }
-#'   \item{`robust`}{: univariately, subtract median and divide by median absolute deviation. To get values into an expected interval of unit interval we use a linear transformation of f(y) = y/4+0.5. }
-#'   \item{`uniminmax`}{: univariately, scale so the minimum of the variable is zero, and the maximum is one.}
-#'   \item{`globalminmax`}{: global scaling; the global maximum is mapped to 1,
+#' \describe{
+#'   \item{`raw`}{raw data used, no scaling is done.}
+#'   \item{`std`}{univariately, subtract mean and divide by standard deviation. To get values into a unit interval we use a linear transformation of f(y) = y/4+0.5. }
+#'   \item{`robust`}{univariately, subtract median and divide by median absolute deviation. To get values into an expected interval of unit interval we use a linear transformation of f(y) = y/4+0.5. }
+#'   \item{`uniminmax`}{univariately, scale so the minimum of the variable is zero, and the maximum is one.}
+#'   \item{`globalminmax`}{global scaling; the global maximum is mapped to 1,
 #'     global minimum across the variables is mapped to 0. }
 #' }
 #' @param data data frame as returned by `select_pcp`

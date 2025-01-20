@@ -46,12 +46,12 @@ reducing the  number of arguments without any loss of functionality.
 
 \code{method} is a character string that denotes how to scale the variables
 in the parallel coordinate plot. Options are named in the same way as the options in \code{\link[GGally:ggparcoord]{GGally::ggparcoord()}}:
-\itemize{
-\item{\code{raw}}{: raw data used, no scaling will be done.}
-\item{\code{std}}{: univariately, subtract mean and divide by standard deviation. To get values into a unit interval we use a linear transformation of f(y) = y/4+0.5. }
-\item{\code{robust}}{: univariately, subtract median and divide by median absolute deviation. To get values into an expected interval of unit interval we use a linear transformation of f(y) = y/4+0.5. }
-\item{\code{uniminmax}}{: univariately, scale so the minimum of the variable is zero, and the maximum is one.}
-\item{\code{globalminmax}}{: global scaling; the global maximum is mapped to 1,
+\describe{
+\item{\code{raw}}{raw data used, no scaling is done.}
+\item{\code{std}}{univariately, subtract mean and divide by standard deviation. To get values into a unit interval we use a linear transformation of f(y) = y/4+0.5. }
+\item{\code{robust}}{univariately, subtract median and divide by median absolute deviation. To get values into an expected interval of unit interval we use a linear transformation of f(y) = y/4+0.5. }
+\item{\code{uniminmax}}{univariately, scale so the minimum of the variable is zero, and the maximum is one.}
+\item{\code{globalminmax}}{global scaling; the global maximum is mapped to 1,
 global minimum across the variables is mapped to 0. }
 }
 }
