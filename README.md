@@ -181,20 +181,7 @@ Variable `aede2` (the front angle of the aedeagus) is collected at a
 fairly low resolution (each unit corresponds to 7.5 degrees), leading to
 only eight different values and a lot of ties – that create a bow-tie
 pattern along the axis. These ties make it impossible to follow a single
-observation across all its values in the PCP. By making `aede2` an
-(ordinal) factor variable, the ties are expanded and allow for the
-additional labelling of each of the categories. Rather than equi-distant
-units, the observations are arranged according to their (cumulative)
-density values, with tied observations ordered according to the values
-on the neighboring axes. When visualizing these ties as separately
-distinguishable line segments, the number of underlying observations is
-instantly more emphasized: more than a third of all Heptapot fleas (in
-blue) have a front angle (`aede2`) of 75 degree. No Heptatpot flea has a
-front angle measuring above 90 degrees, while none of the Heikert and
-Concinna fleas go below the 90 degree threshold. Heikert and Concinna
-separate well on variable `aede1` (the width of the fore-part of the
-aedaegus): Heikert fleas (in green) have a smaller aedaegus width than
-Concinnas (reddish).
+observation across all its values in the PCP.
 
 ``` r
 flea <- flea  %>% mutate(
@@ -214,6 +201,20 @@ pcp_select(1:7) %>%
 ```
 
 ![](man/figures/unnamed-chunk-5-1.png)<!-- -->
+
+By making `aede2` a(n ordinal) factor variable, the ties are expanded
+and allow for the additional labelling of each of the categories. Rather
+than equi-distant units, the observations are arranged according to
+their (cumulative) density values, with tied observations ordered
+according to the values on the neighboring axes. When visualizing these
+ties as separately distinguishable line segments, the number of
+underlying observations is instantly more emphasized: more than a third
+of all Heptapot fleas (in blue) have a front angle (`aede2`) of 75
+degree. No Heptatpot flea has a front angle measuring above 90 degrees,
+while none of the Heikert and Concinna fleas go below the 90 degree
+threshold. Heikert and Concinna separate well on variable `aede1` (the
+width of the fore-part of the aedaegus): Heikert fleas (in green) have a
+smaller aedaegus width than Concinnas (reddish).
 
 ### Try it for yourself
 
