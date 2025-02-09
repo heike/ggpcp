@@ -166,10 +166,59 @@ flea %>%
     geom_pcp_axes() + 
     geom_pcp_boxes(boxwidth = 0.1, fill="grey70") +
     geom_pcp(aes(colour = species), overplot = "none") +
-    geom_pcp_labels() 
+    geom_pcp_labels() +
+    theme_pcp()
 ```
 
 <img src="man/figures/flea-labelled-1.png" alt="Parallel coordinate plot of the flea data. The previous iteration of the plot is extended by a layer showing labels of the levels of the categorical  variable species."  />
+
+Note that we have also added the pcp specific `theme_pcp` to the plot.
+That theming removes the uninspired (and unnecessary) names along the x
+and y axis and uses a white background for a generally better color
+contrast.
+
+Variable `aede2` (the front angle of the aedeagus) is collected at a
+fairly low resolution (each unit corresponds to 7.5 degrees), leading to
+only eight different values and a lot of ties – that create a bow-tie
+pattern along the axis. These ties make it impossible to follow a single
+observation across all its values in the PCP. By making `aede2` an
+(ordinal) factor variable, the ties are expanded and allow for the
+additional labelling of each of the categories. Rather than equi-distant
+units, the observations are arranged according to their (cumulative)
+density values, with tied observations ordered according to the values
+on the neighboring axes. When visualizing these ties as separately
+distinguishable line segments, the number of underlying observations is
+instantly more emphasized: more than a third of all Heptapot fleas (in
+blue) have a front angle (`aede2`) of 75 degree. No Heptatpot flea has a
+front angle measuring above 90 degrees, while none of the Heikert and
+Concinna fleas go below the 90 degree threshold. Heikert and Concinna
+separate well on variable `aede1` (the width of the fore-part of the
+aedaegus): Heikert fleas (in green) have a smaller aedaegus width than
+Concinnas (reddish).
+
+``` r
+flea <- flea  %>% mutate(
+  aede2 = factor(aede2, labels = paste0(sort(unique(aede2))*7.5, "°"))
+)
+
+flea %>% 
+pcp_select(1:7) %>%
+  pcp_scale(method="uniminmax") %>%
+  pcp_arrange() %>%
+  ggplot(aes_pcp()) + 
+    geom_pcp_axes() + 
+    geom_pcp_boxes(boxwidth = 0.1, fill="grey70") +
+    geom_pcp(aes(colour = species), overplot = "none") +
+    geom_pcp_labels() +
+    theme_pcp()
+```
+
+![](man/figures/unnamed-chunk-5-1.png)<!-- -->
+
+### Try it for yourself
+
+How many fleas have the maximum head size? For each species, what is the
+mode in head size?
 
 ## Examples
 
@@ -195,7 +244,8 @@ titanic %>%
     scale_colour_manual(values=c("darkorange", "steelblue")) +
     guides(colour=guide_legend(override.aes = list(alpha=1))) +
     geom_pcp_labels() +
-    scale_x_discrete(expand = expansion(add=0.2))
+    scale_x_discrete(expand = expansion(add=0.2)) +
+    theme_pcp()
 ```
 
 <img src="man/figures/titanic-1.png" alt="Parallel coordinate plot of titanic data. The four categorical variables Class, Sex, Age, and Survived, are plotted along the x axis. The observations within each of the levels are plotted in lines stacked on top of one another. This creates the impression that the line segments form a single band between neighboring variables, making the parallel coordinate plot look like an example of a parset plot."  />
@@ -215,7 +265,8 @@ titanic %>%
     scale_colour_manual(values=c("darkorange", "steelblue")) +
     guides(colour=guide_legend(override.aes = list(alpha=1))) +
     geom_pcp_labels() +
-    scale_x_discrete(expand = expansion(add=0.2))
+    scale_x_discrete(expand = expansion(add=0.2)) +
+  theme_pcp()
 ```
 
     ## Scale for x is already present.
@@ -243,7 +294,8 @@ mtcars %>%
   pcp_scale() %>%
   ggplot(aes_pcp()) + 
     geom_pcp_axes() + 
-    geom_pcp(aes(colour = as.numeric(mpg)))
+    geom_pcp(aes(colour = as.numeric(mpg))) + 
+  theme_pcp()
 ```
 
 <img src="man/figures/mtcars-default-1.png" alt="Parallel coordinate plot of the mtcars data. All variables of the dataset  are included as numeric variables. Line segments are colored by the values  in mpg."  />
@@ -271,7 +323,7 @@ mtcars %>%
     geom_pcp_boxes(fill="grey80") + 
     geom_pcp(aes(colour = as.numeric(mpg)), size = 1, overplot = "none") +
   scale_colour_gradient2("mpg", mid="grey80", midpoint = 20, low="darkred", high="darkblue") +
-  theme_bw() + 
+  theme_pcp() + 
   facet_grid(mpg>20~., labeller = "label_both")
 ```
 
@@ -324,7 +376,7 @@ wide %>% separate(id, into=c("y", "x"), remove = FALSE) %>%
   coord_equal()
 ```
 
-![](man/figures/unnamed-chunk-6-1.png)<!-- -->
+![](man/figures/unnamed-chunk-7-1.png)<!-- -->
 
 <!-- From the parallel coordinate plot we see that cloud coverage in low, medium and high altitude distinguishes quite succinctly between some of the clusters. (Relative) temperatures in January (1) and July (7) are very indicative to separate between clusters on the Southern and Northern hemisphere.  -->
 
@@ -352,7 +404,8 @@ wide %>%
   ggplot(aes_pcp()) + 
     geom_pcp_axes() + 
     geom_pcp() +
-  xlab("Number of clusters")
+  xlab("Number of clusters") + 
+  theme_pcp()
 ```
 
 <img src="man/figures/nasa-skeleton-1.png" alt="Parallel Coordinate plot of result variables from hierarchical clustering into 2 to 10 clusters. The cluster variables are included as numerical variables resulting in a plot with a lot of overplotting. The overall impression is that of a skeleton: the individual line segments show the relationship between clusters but not their sizes."  />
@@ -384,7 +437,8 @@ wide %>%
   geom_pcp(aes(colour = cl10), alpha = 0.25) +
   xlab("Number of clusters") +
   scale_colour_brewer("Cluster", palette="Paired") +
-  guides(colour=guide_legend(override.aes = list(alpha=1)), reverse = TRUE)
+  guides(colour=guide_legend(override.aes = list(alpha=1)), reverse = TRUE) + 
+  theme_pcp()
 ```
 
 <img src="man/figures/nasa-clustering-1.png" alt="Parallel Coordinate plot of the same variables as before, but now the result variables are included as factor variables and colored by the cluster results  of ten clusters. Individual line segments are stacked on top of each other, creating the impression of a single band, with a width proportional to the number of observations included.  "  />
