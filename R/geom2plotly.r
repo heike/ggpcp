@@ -30,6 +30,18 @@ to_basic.GeomPcp_axes <- function(data, prestats_data, layout, params, p, ...) {
   prefix_class(data, "GeomBlank") # no text for the axes
 }
 
+#' @rdname plotly_helpers
+#' @export
+to_basic.GeomPcp_labels <- function(data, prestats_data, layout, params, p, ...) {
+  prefix_class(data, "GeomBlank") # no text for the axes
+}
+
+#' @rdname plotly_helpers
+#' @export
+to_basic.GeomPcp_boxes <- function(data, prestats_data, layout, params, p, ...) {
+  prefix_class(data, "GeomBlank") # no text for the axes
+}
+
 
 #' @rdname plotly_helpers
 #' @keywords internal

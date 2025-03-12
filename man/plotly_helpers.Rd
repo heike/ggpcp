@@ -4,12 +4,18 @@
 \alias{plotly_helpers}
 \alias{to_basic.GeomPcp}
 \alias{to_basic.GeomPcp_axes}
+\alias{to_basic.GeomPcp_labels}
+\alias{to_basic.GeomPcp_boxes}
 \alias{prefix_class}
 \title{Plotly helpers}
 \usage{
 \method{to_basic}{GeomPcp}(data, prestats_data, layout, params, p, ...)
 
 \method{to_basic}{GeomPcp_axes}(data, prestats_data, layout, params, p, ...)
+
+\method{to_basic}{GeomPcp_labels}(data, prestats_data, layout, params, p, ...)
+
+\method{to_basic}{GeomPcp_boxes}(data, prestats_data, layout, params, p, ...)
 
 prefix_class(x, y)
 }

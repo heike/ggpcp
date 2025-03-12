@@ -2,6 +2,8 @@
 
 S3method(to_basic,GeomPcp)
 S3method(to_basic,GeomPcp_axes)
+S3method(to_basic,GeomPcp_boxes)
+S3method(to_basic,GeomPcp_labels)
 export(GeomPcp)
 export(GeomPcp_axes)
 export(GeomPcp_boxes)
