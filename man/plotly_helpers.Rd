@@ -24,6 +24,12 @@ Helper functions to make it easier to automatically create plotly charts
 }
 \examples{
 # example code
+library(plotly)
+data(flea, package = "GGally")
+flea_pcp <- flea \%>\%
+  pcp_select(species, 2:7, species) \%>\%
+  pcp_scale(method="uniminmax") \%>\%
+  pcp_arrange()
 flea_plotly <- highlight_key(flea_pcp, ~pcp_id)
 p <- flea_plotly  |>
   ggplot(aes_pcp()) +
