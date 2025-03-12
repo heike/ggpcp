@@ -119,13 +119,16 @@
 <span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="do">## * `class` -&gt; `pcp_class`</span></span>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="do">## * `group` -&gt; `pcp_id`</span></span>
 <span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="do">## * `level` -&gt; `pcp_level`</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="do">## * `label` -&gt; `pcp_level`</span></span></code></pre></div>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="do">## * `label` -&gt; `pcp_level`</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="do">## * `value` -&gt; `pcp_value`</span></span></code></pre></div>
 <p>The geom <code>geom_pcp</code> draws line segments to connect positions of the same observational unit across axes:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">flea</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">flea_pcp</span> <span class="op">&lt;-</span> <span class="va">flea</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="reference/pcp_select.html">pcp_select</a></span><span class="op">(</span><span class="va">species</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">7</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="reference/pcp_scale.html">pcp_scale</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"uniminmax"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="reference/pcp_arrange.html">pcp_arrange</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="reference/pcp_arrange.html">pcp_arrange</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">flea_pcp</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu"><a href="reference/aes_pcp.html">aes_pcp</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>    <span class="fu"><a href="reference/geom_pcp_axes.html">geom_pcp_axes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>    <span class="fu"><a href="reference/geom_pcp.html">geom_pcp</a></span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -208,8 +211,8 @@
 <span>    <span class="fu">scale_colour_manual</span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"darkorange"</span>, <span class="st">"steelblue"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">guides</span><span class="op">(</span>colour<span class="op">=</span><span class="fu">guide_legend</span><span class="op">(</span>override.aes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="reference/geom_pcp_labels.html">geom_pcp_labels</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">scale_x_discrete</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>add<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="reference/theme_pcp.html">theme_pcp</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>    <span class="fu"><a href="reference/theme_pcp.html">theme_pcp</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">scale_x_discrete</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>add<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="reference/figures/titanic-1.png" alt="Parallel coordinate plot of titanic data. The four categorical variables Class, Sex, Age, and Survived, are plotted along the x axis. The observations within each of the levels are plotted in lines stacked on top of one another. This creates the impression that the line segments form a single band between neighboring variables, making the parallel coordinate plot look like an example of a parset plot."></p>
 <p>Switching the ordering method in <code>pcp_arrange</code> to <code>from-both</code> allows us to focus on the two-dimensional relationships between variables on adjacent axes:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -223,8 +226,8 @@
 <span>    <span class="fu">scale_colour_manual</span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"darkorange"</span>, <span class="st">"steelblue"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">guides</span><span class="op">(</span>colour<span class="op">=</span><span class="fu">guide_legend</span><span class="op">(</span>override.aes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="reference/geom_pcp_labels.html">geom_pcp_labels</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">scale_x_discrete</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>add<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="reference/theme_pcp.html">theme_pcp</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="reference/theme_pcp.html">theme_pcp</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_discrete</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>add<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="do">## Scale for x is already present.</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="do">## Adding another scale for x, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/titanic-marginal-1.png" alt="Parallel coordinate plot of titanic data. Variation of the previous plot with a change on how ties between neighboring variables are resolved. "></p>
@@ -335,6 +338,29 @@
 <p>Along the x-axis the number of clusters are plotted with one pcp axis each, from two clusters (left) to 10 clusters (right most pcp axis). Each observation is drawn as a multi-segmented line and colored by its assignment in the ten-cluster solution. This gives an excerpt of the dendrogram that allows an assessment of the number of observations in each cluster as well as the relationship between successive clustering steps.</p>
 </div>
 </div>
+<div class="section level3">
+<h3 id="interactive-usage-with-plotly">Interactive usage with <code>plotly</code>
+<a class="anchor" aria-label="anchor" href="#interactive-usage-with-plotly"></a>
+</h3>
+<p>The package is providing functionality for interactive use with plotly. Click on the chart below to open the plot in a separate html document.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://plotly-r.com" class="external-link">plotly</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ramnathv/htmlwidgets" class="external-link">htmlwidgets</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/chromote/" class="external-link">chromote</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>chromote.headless <span class="op">=</span> <span class="st">"new"</span><span class="op">)</span></span>
+<span><span class="va">flea_plotly</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/highlight_key.html" class="external-link">highlight_key</a></span><span class="op">(</span><span class="va">flea_pcp</span>, <span class="op">~</span><span class="va">pcp_id</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">flea_plotly</span>  <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="reference/aes_pcp.html">aes_pcp</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="reference/geom_pcp_axes.html">geom_pcp_axes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="reference/geom_pcp.html">geom_pcp</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">species</span>, label <span class="op">=</span> <span class="va">pcp_id</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">pp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/ggplotly.html" class="external-link">ggplotly</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/highlight.html" class="external-link">highlight</a></span><span class="op">(</span><span class="va">pp</span>, on<span class="op">=</span><span class="st">"plotly_hover"</span><span class="op">)</span> </span></code></pre></div>
+<p><img src="reference/figures/unnamed-chunk-8-1.png"><!-- --></p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/htmlwidgets/man/saveWidget.html" class="external-link">saveWidget</a></span><span class="op">(</span><span class="va">pp</span>, <span class="st">"inst/pp.html"</span>, selfcontained <span class="op">=</span> <span class="cn">F</span>, libdir <span class="op">=</span> <span class="st">"lib"</span><span class="op">)</span></span></code></pre></div>
+<!-- htmltools::includeHTML("pp.html")-->
+</div>
 </div>
 </div>
 <div class="section level1">
@@ -351,6 +377,7 @@
 <p>All of the implementations described above have in common that they describe highly specialized plots - in the sense that there are tens of parameters describing construction, type, and appearance of the plot. While giving the user some flexibility this way, this approach goes against the modular approach of the tidyverse, and in particular against the layered approach of ggplot2, i.e. at best the approaches make use of ggplot2, but they do not make use of the ideas behind ggplot2.</p>
 <p>The main idea of <code>ggpcp</code> is that we separate the data transformations from the visualization, i.e. rather than working with a single function to draw a plot, we are providing a set of functions that work together.</p>
 <p>This idea is not new - a function under the very same name was at some point part of ggplot2 (see <a href="https://www.rdocumentation.org/packages/ggplot2/versions/0.9.2.1/topics/ggpcp" class="external-link uri">https://www.rdocumentation.org/packages/ggplot2/versions/0.9.2.1/topics/ggpcp</a>), but at the time the implementation stalled and was eventually removed from ggplot2.</p>
+<p>This implementation is documented in further detail in <a href="https://doi.org/10.1080/10618600.2023.2195462" class="external-link">Vanderplas et al (2023)</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
@@ -365,6 +392,8 @@
 <li>Schonlau M.: Visualizing Categorical Data Arising in the Health Sciences Using Hammock Plots, Proc. of Section on Statistical Graphics ASA, 2003.</li>
 <li>Schonlau M. The clustergram: a graph for visualizing hierarchical and non-hierarchical cluster analyses. The Stata Journal, 2002; 2 (4):391-402.</li>
 <li>Schonlau M. Visualizing Hierarchical and Non-Hierarchical Cluster Analyses with Clustergrams. Computational Statistics: 2004; 19(1):95-111.</li>
+<li>VanderPlas S, Ge Y, Unwin A, Hofmann H (2023). Penguins Go Parallel - A Grammar of Graphics Framework for Generalized Parallel Coordinate Plots. <em>Journal of Computational and Graphical Statistics</em>, <em>32</em>(4), 1572-1587. <a href="doi:10.1080/10618600.2023.2195462" class="uri">doi:10.1080/10618600.2023.2195462</a>
+</li>
 <li>Venables W.N., Ripley B.D.: Modern Applied Statistics with S (4th ed), Springer, 2002.</li>
 <li>Wegman, E., Hyperdimensional Data Analysis Using Parallel Coordinates, JASA, 85(411), 664-675, 1990.</li>
 <li>Wickham H., ggplot2: Elegant graphics for data analysis (2nd ed), Springer, 2016</li>
