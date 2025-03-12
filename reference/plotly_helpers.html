@@ -55,7 +55,25 @@
     </div>
 
 
-  </main></div>
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># example code</span></span></span>
+<span class="r-in"><span><span class="va">flea_plotly</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/highlight_key.html" class="external-link">highlight_key</a></span><span class="op">(</span><span class="va">flea_pcp</span>, <span class="op">~</span><span class="va">pcp_id</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in highlight_key(flea_pcp, ~pcp_id):</span> could not find function "highlight_key"</span>
+<span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">flea_plotly</span>  <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="aes_pcp.html">aes_pcp</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="geom_pcp_axes.html">geom_pcp_axes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="geom_pcp.html">geom_pcp</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">species</span>, label <span class="op">=</span> <span class="va">pcp_id</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'flea_plotly' not found</span>
+<span class="r-in"><span><span class="va">pp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/ggplotly.html" class="external-link">ggplotly</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in ggplotly(p):</span> could not find function "ggplotly"</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/highlight.html" class="external-link">highlight</a></span><span class="op">(</span><span class="va">pp</span>, on<span class="op">=</span><span class="st">"plotly_hover"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in highlight(pp, on = "plotly_hover"):</span> could not find function "highlight"</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
