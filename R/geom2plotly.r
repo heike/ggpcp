@@ -4,22 +4,22 @@
 #' @importFrom plotly to_basic
 #' @description Helper functions to make it easier to automatically create plotly charts
 #' @export
- to_basic.GeomPcp <- function(data, prestats_data, layout, params, p, ...) {
+#' @examples
+#' # example code
+#' flea_plotly <- highlight_key(flea_pcp, ~pcp_id)
+#' p <- flea_plotly  |>
+#'   ggplot(aes_pcp()) +
+#'   geom_pcp_axes() +
+#'   geom_pcp(aes(colour = species, label = pcp_id))
+#
+#' pp <- ggplotly(p)
+#' highlight(pp, on="plotly_hover")
+#'
+to_basic.GeomPcp <- function(data, prestats_data, layout, params, p, ...) {
    data$hovertext <- paste0(as.character(data$x_plotlyDomain), ": ", data$value)
-
- #  browser()
-
-#   data <- data %>% group_by(group) %>% mutate(
-#     hovertext = paste0(as.character(x_plotlyDomain), ": ", label, collapse = "\n")
-#   ) %>% ungroup()
-
 
    data <- data[order(data[["x"]]), ]
    prefix_class(data, "GeomPath")
-#
-#
-#
-#   getFromNamespace("to_basic.GeomLine", asNamespace("plotly"))
 }
 
 

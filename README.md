@@ -459,6 +459,7 @@ steps.
 
 The package is providing functionality for interactive use with plotly.
 Click on the chart below to open the plot in a separate html document.
+XXX get the link to the documentation
 
 ``` r
 library(plotly)
@@ -475,13 +476,16 @@ pp <- ggplotly(p)
 highlight(pp, on="plotly_hover") 
 ```
 
-![](man/figures/unnamed-chunk-8-1.png)<!-- -->
+![](man/figures/unnamed-chunk-8-1.png)<!-- --> <!--
 
 ``` r
-saveWidget(pp, "inst/pp.html", selfcontained = F, libdir = "lib")
+htmltools::tags$iframe("inst/pp.html")
 ```
 
-<!-- htmltools::includeHTML("pp.html")-->
+```{=html}
+<iframe>inst/pp.html</iframe>
+```
+-->
 
 # Related work
 

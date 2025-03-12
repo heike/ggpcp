@@ -22,4 +22,15 @@ prefix_class(x, y)
 \description{
 Helper functions to make it easier to automatically create plotly charts
 }
+\examples{
+# example code
+flea_plotly <- highlight_key(flea_pcp, ~pcp_id)
+p <- flea_plotly  |>
+  ggplot(aes_pcp()) +
+  geom_pcp_axes() +
+  geom_pcp(aes(colour = species, label = pcp_id))
+pp <- ggplotly(p)
+highlight(pp, on="plotly_hover")
+
+}
 \keyword{internal}

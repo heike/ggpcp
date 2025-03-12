@@ -419,7 +419,7 @@ Along the x-axis the number of clusters are plotted with one pcp axis each, from
 
 ### Interactive usage with `plotly`
 
-The package is providing functionality for interactive use with plotly. Click on the chart below to open the plot in a separate html document.
+The package is providing functionality for interactive use with plotly. Click on the chart below to open the plot in a separate html document. XXX get the link to the documentation
 
 ```{r message=FALSE}
 library(plotly)
@@ -434,12 +434,12 @@ p <- flea_plotly  |>
 
 pp <- ggplotly(p) 
 highlight(pp, on="plotly_hover") 
-saveWidget(pp, "inst/pp.html", selfcontained = F, libdir = "lib")
 ```
-
-
-
-<!-- htmltools::includeHTML("pp.html")-->
+<!--
+```{r}
+htmltools::tags$iframe("inst/pp.html")
+```
+-->
 
 
 # Related work
