@@ -45,6 +45,7 @@ small_on_top <- function(data) {
 #' @param group identifier
 #' @param level character string of factor levels
 #' @param label label for factors
+#' @param value original value of any of the variables
 #' @param ... other aesthetics are directly passed on to `ggplot2`'s mapping
 #' @import ggplot2
 #' @export
@@ -59,8 +60,9 @@ small_on_top <- function(data) {
 #'   ggplot(aes_pcp(colour = Species)) +
 #'     geom_pcp() +
 #'     theme_pcp()
-aes_pcp <- function(x = pcp_x, y = pcp_y, yend = pcp_yend, class = pcp_class, group = pcp_id, level = pcp_level, label = pcp_level, ...) {
+aes_pcp <- function(x = pcp_x, y = pcp_y, yend = pcp_yend, class = pcp_class, group = pcp_id, level = pcp_level, label = pcp_level, value = pcp_value, ...) {
   pcp_x <- pcp_y <- pcp_class <- pcp_id <- pcp_level <- pcp_yend <- NULL
+  pcp_value <- NULL
 
   x <- enquo(x)
   y <- enquo(y)
@@ -69,10 +71,11 @@ aes_pcp <- function(x = pcp_x, y = pcp_y, yend = pcp_yend, class = pcp_class, gr
   group <- enquo(group)
   level <- enquo(level)
   label <- enquo(label)
+  value <- enquo(value)
 
   #browser()
   ggplot2::aes(x = !!x, y = !!y, yend = !!yend, class = !!class, group = !!group,
-               level = !!level, label = !!label, ...)
+               level = !!level, label = !!label, value = !!value, ...)
 }
 
 #' Generalized Parallel Coordinate plots

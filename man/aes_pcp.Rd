@@ -12,6 +12,7 @@ aes_pcp(
   group = pcp_id,
   level = pcp_level,
   label = pcp_level,
+  value = pcp_value,
   ...
 )
 }
@@ -29,6 +30,8 @@ aes_pcp(
 \item{level}{character string of factor levels}
 
 \item{label}{label for factors}
+
+\item{value}{original value of any of the variables}
 
 \item{...}{other aesthetics are directly passed on to \code{ggplot2}'s mapping}
 }

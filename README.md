@@ -115,15 +115,18 @@ aes_pcp()
     ## * `group` -> `pcp_id`
     ## * `level` -> `pcp_level`
     ## * `label` -> `pcp_level`
+    ## * `value` -> `pcp_value`
 
 The geom `geom_pcp` draws line segments to connect positions of the same
 observational unit across axes:
 
 ``` r
-flea %>%
+flea_pcp <- flea %>%
   pcp_select(species, 2:7, species) %>%
   pcp_scale(method="uniminmax") %>%
-  pcp_arrange() %>%
+  pcp_arrange() 
+
+flea_pcp %>%
   ggplot(aes_pcp()) + 
     geom_pcp_axes() + 
     geom_pcp(aes(colour = species))
@@ -245,8 +248,8 @@ titanic %>%
     scale_colour_manual(values=c("darkorange", "steelblue")) +
     guides(colour=guide_legend(override.aes = list(alpha=1))) +
     geom_pcp_labels() +
-    scale_x_discrete(expand = expansion(add=0.2)) +
-    theme_pcp()
+    theme_pcp() +
+    scale_x_discrete(expand = expansion(add=0.2)) 
 ```
 
 <img src="man/figures/titanic-1.png" alt="Parallel coordinate plot of titanic data. The four categorical variables Class, Sex, Age, and Survived, are plotted along the x axis. The observations within each of the levels are plotted in lines stacked on top of one another. This creates the impression that the line segments form a single band between neighboring variables, making the parallel coordinate plot look like an example of a parset plot."  />
@@ -266,8 +269,8 @@ titanic %>%
     scale_colour_manual(values=c("darkorange", "steelblue")) +
     guides(colour=guide_legend(override.aes = list(alpha=1))) +
     geom_pcp_labels() +
-    scale_x_discrete(expand = expansion(add=0.2)) +
-  theme_pcp()
+  theme_pcp() +
+  scale_x_discrete(expand = expansion(add=0.2)) 
 ```
 
     ## Scale for x is already present.
@@ -452,6 +455,34 @@ dendrogram that allows an assessment of the number of observations in
 each cluster as well as the relationship between successive clustering
 steps.
 
+### Interactive usage with `plotly`
+
+The package is providing functionality for interactive use with plotly.
+Click on the chart below to open the plot in a separate html document.
+
+``` r
+library(plotly)
+library(htmlwidgets)
+library(chromote)
+options(chromote.headless = "new")
+flea_plotly <- highlight_key(flea_pcp, ~pcp_id)
+p <- flea_plotly  |>
+  ggplot(aes_pcp()) + 
+    geom_pcp_axes() + 
+    geom_pcp(aes(colour = species, label = pcp_id))
+
+pp <- ggplotly(p) 
+highlight(pp, on="plotly_hover") 
+```
+
+![](man/figures/unnamed-chunk-8-1.png)<!-- -->
+
+``` r
+saveWidget(pp, "inst/pp.html", selfcontained = F, libdir = "lib")
+```
+
+<!-- htmltools::includeHTML("pp.html")-->
+
 # Related work
 
 Parallel coordinate plots have been implemented in analysis software
@@ -500,6 +531,9 @@ point part of ggplot2 (see
 but at the time the implementation stalled and was eventually removed
 from ggplot2.
 
+This implementation is documented in further detail in [Vanderplas et al
+(2023)](https://doi.org/10.1080/10618600.2023.2195462).
+
 ## References
 
 - Hofmann H., Vendettuoli M.: Common Angle Plots as Perception-True
@@ -524,6 +558,10 @@ from ggplot2.
 - Schonlau M. Visualizing Hierarchical and Non-Hierarchical Cluster
   Analyses with Clustergrams. Computational Statistics: 2004;
   19(1):95-111.
+- VanderPlas S, Ge Y, Unwin A, Hofmann H (2023). Penguins Go Parallel -
+  A Grammar of Graphics Framework for Generalized Parallel Coordinate
+  Plots. *Journal of Computational and Graphical Statistics*, *32*(4),
+  1572-1587. <doi:10.1080/10618600.2023.2195462>
 - Venables W.N., Ripley B.D.: Modern Applied Statistics with S (4th ed),
   Springer, 2002.
 - Wegman, E., Hyperdimensional Data Analysis Using Parallel Coordinates,

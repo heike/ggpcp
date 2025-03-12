@@ -55,7 +55,7 @@
 pcp_select <- function(data, ...) {
   pcp_x <- pcp_y <- pcp_yend <- NULL # make R CMD CHECK happy
   pcp_level <- NULL
-
+# browser()
   # coerce character variable
   data <- data %>% purrr::map(.f = function(x) {
     if (is.character(x)) return(factor(x))
@@ -118,6 +118,7 @@ pcp_select <- function(data, ...) {
   gather_data_wide <- filter(gather_data_wide, !is.na(pcp_level))
   gather_data_wide <- fortify(gather_data_wide)
 #  attr(gather_data_wide, "var_order") <- var_order
-
+#browser()
+  gather_data_wide$pcp_value <- gather_data_wide$pcp_level
   gather_data_wide
 }

@@ -62,6 +62,7 @@ pcp_scale <- function(data, method = "uniminmax", .by_group = TRUE) {
   assert_that(!is.null(method))
   assert_that(method %in% c("raw", "uniminmax", "robust", "std", "globalminmax"))
   assert_that(is.numeric(data$pcp_y))
+  assert_that(has_name(data, "pcp_value")) # don't touch, just pass through
 
 
   if (method == "raw") {
