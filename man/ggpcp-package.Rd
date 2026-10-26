@@ -22,6 +22,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Heike Hofmann \email{hhofmann4@unl.edu} (\href{https://orcid.org/0000-0001-6216-5183}{ORCID})
   \item Susan VanderPlas \email{susan.vanderplas@unl.edu} (\href{https://orcid.org/0000-0002-3803-0972}{ORCID})
   \item Yawei Ge \email{yaweige@iastate.edu}
 }

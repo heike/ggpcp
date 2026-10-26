@@ -12,7 +12,7 @@ theme_pcp(base_size = 11, base_family = "")
 \item{base_family}{base font family}
 }
 \value{
-A \code{ggplot2} theme object based on \code{\link[ggplot2:ggtheme]{ggplot2::theme_bw()}} without y axis and x axes labels.
+A \code{ggplot2} theme object based on \code{\link[ggplot2:theme_bw]{ggplot2::theme_bw()}} without y axis and x axes labels.
 }
 \description{
 The function \code{theme_pcp} provides a wrapper for thematic
@@ -36,5 +36,5 @@ gg
 gg + theme_pcp()
 }
 \seealso{
-\code{\link[ggplot2:ggtheme]{ggplot2::theme_bw()}}
+\code{\link[ggplot2:theme_bw]{ggplot2::theme_bw()}}
 }
