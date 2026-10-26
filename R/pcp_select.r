@@ -40,7 +40,7 @@
 #' columns. The number of rows is given as the multiple of the number of selected
 #' variables and the number of rows in the original data.
 #' @importFrom dplyr left_join filter `%>%`
-#' @importFrom tidyr gather
+#' @importFrom tidyr pivot_longer
 #' @importFrom tibble as_tibble
 #' @importFrom ggplot2 fortify
 #' @seealso [pcp_scale()], [pcp_arrange()]
@@ -96,9 +96,17 @@ pcp_select <- function(data, ...) {
   data2 <- data
   data2[, var_order] <- lapply(subdata, FUN = as.character) # change the factors only in the copy
 #  browser()
-  suppressMessages({
-  gather_data <- tidyr::gather(data2, pcp_x, pcp_level, var_order, factor_key=TRUE)
-  })
+  # suppressMessages({
+  # gather_data <- tidyr::gather(data2, key = pcp_x, value = pcp_level, var_order, factor_key=TRUE)
+  # })
+
+  gather_data <- tidyr::pivot_longer(data2, cols = var_order,
+                      names_to="pcp_x", values_to="pcp_level",
+                      cols_vary="slowest")
+  # now make the pcp_x variable a factor and order by the var_order
+  gather_data <- gather_data |>
+    mutate(pcp_x = factor(pcp_x, levels = var_order))
+
   gather_data$pcp_y <- unlist(lapply(subdata, FUN = as.numeric))
   gather_data$pcp_yend <- gather_data$pcp_y
   # # revert factors, to make first level the top.

@@ -96,6 +96,8 @@ pcp_arrange <- function(data, method = "from-right", space = 0.05, .by_group = T
 #    subdata %>% select(-.data$..replace..)
     subdata
   }
+
+#  browser()
   vars <- data %>% group_by(pcp_x, .add = FALSE) %>%
     summarize(pcp_class = pcp_class[1]) %>% mutate(pcp_x = as.character(pcp_x))
   targets <- which(vars$pcp_class == "factor")
@@ -292,3 +294,4 @@ pcp_arrange <- function(data, method = "from-right", space = 0.05, .by_group = T
     data$pcp_yend <- data$pcp_y
   data
 }
+
