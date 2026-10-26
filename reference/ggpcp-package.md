@@ -24,6 +24,9 @@ Useful links:
 
 Authors:
 
+- Heike Hofmann <hhofmann4@unl.edu>
+  ([ORCID](https://orcid.org/0000-0001-6216-5183))
+
 - Susan VanderPlas <susan.vanderplas@unl.edu>
   ([ORCID](https://orcid.org/0000-0002-3803-0972))
 
