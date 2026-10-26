@@ -1,8 +1,8 @@
-pandoc: 3.1.11
-pkgdown: 2.1.3
+pandoc: 3.8.3
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-07-31T19:54Z
+last_built: 2026-10-26T16:11Z
 urls:
   reference: https://heike.github.io/ggpcp/reference
   article: https://heike.github.io/ggpcp/articles
